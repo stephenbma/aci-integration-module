@@ -25,5 +25,20 @@ except ImportError:
     pass
 
 setuptools.setup(
-    setup_requires=['pbr'],
-    pbr=True)
+    name="aci-integration-module",
+    version="0.14.3",
+    packages=setuptools.find_packages(exclude=["*.tests", "*.tests.*",
+                                               "tests.*", "tests"]),
+    author="Cisco Systems, Inc.",
+    author_email="apicapi@noironetworks.com",
+    url="http://github.com/noironetworks/aci-integration-module/",
+    license="http://www.apache.org/licenses/LICENSE-2.0",
+    description="Integration Module for ACI.",
+    entry_points = {
+      'console_scripts': [
+         'aimctl = aim.tools.services.cli:aimctl',
+         'aimdebug = aim.tools.services.cli:aimdebug',
+         'aim-aid = aim.tools.services.aid:aid',
+         'aim-event-service-polling = aim.tools.services.aid:event_polling',
+         'aim-event-service-rpc = aim.tools.services.aid:rpc',
+         'aim-http-server = aim.tools.services.cherrypy_server:http_server']})
